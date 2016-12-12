@@ -57,24 +57,36 @@
   Ensure that all columns have their headers listed and their data types are
   clear (i.e., state which is an int and which is a char and so on).-->
   
-    <ol>
-      
-    <li><a href="http://www.cs.csustan.edu/">LibraryUsers</a></li>
-    <li><a href="http://www.cs.csustan.edu/">LibraryWork</a></li>
-    <li><a href="http://www.cs.csustan.edu/">ISBN</a></li>
-    <li><a href="http://www.cs.csustan.edu/">Books</a></li>
-    <li><a href="http://www.cs.csustan.edu/">Periodicals</a></li>
-    <li><a href="http://www.cs.csustan.edu/">Serialization</a></li>
-    <li><a href="http://www.cs.csustan.edu/">Serialized</a></li>
-    <li><a href="http://www.cs.csustan.edu/">Branch</a></li>
-    <li><a href="http://www.cs.csustan.edu/">Shelf</a></li>
-    <li><a href="http://www.cs.csustan.edu/">Repairers</a></li>
-    <li><a href="http://www.cs.csustan.edu/">Rent</a></li>
-    <li><a href="http://www.cs.csustan.edu/">Reserved</a></li>
-    <li><a href="http://www.cs.csustan.edu/">Subscribed</a></li>
-    <li><a href="http://www.cs.csustan.edu/">LocatedAt</a></li>
-    <li><a href="http://www.cs.csustan.edu/">BeingRepaired</a></li>
-    <li><a href="http://www.cs.csustan.edu/">Review</a></li>
+   <!-- source: http://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_event_ready
+  -->
+
+  <script>
+    $(document).ready(function(){
+      $("button").click(function(){
+      });
+
+    });
+  </script>
+  
+  <ol>
+  <form METHOD=POST ACTION="library.php">
+    <li><button type= submit name="query" value="SELECT * FROM LibraryUsers;">LibraryUsers</button></li>
+    <li><button type= submit name="query" value="SELECT * FROM LibraryWork;">LibraryWork</button></li>
+    <li><button type= submit name="query" value="SELECT * FROM ISBN;">ISBN</button></li>
+    <li><button type= submit name="query" value="SELECT * FROM Books;">Books</button></li>
+    <li><button type= submit name="query" value="SELECT * FROM Periodicals;">Periodicals</button></li>
+    <li><button type= submit name="query" value="SELECT * FROM Serialization;">Serialization</button></li>
+    <li><button type= submit name="query" value="SELECT * FROM Serialized;">Serialized</button></li>
+    <li><button type= submit name="query" value="SELECT * FROM Branch;">Branch</button></li>
+    <li><button type= submit name="query" value="SELECT * FROM Shelf">Shelf</button></li>
+    <li><button type= submit name="query" value="SELECT * FROM Repairers">Repairers</button></li>
+    <li><button type= submit name="query" value="SELECT * FROM RENT;">Rent</button></li>
+    <li><button type= submit name="query" value="SELECT * FROM Reserved;">Reserved</button></li>
+    <li><button type= submit name="query" value="SELECT * FROM Subscribed;">Subscribed</button></li>
+    <li><button type= submit name="query" value="SELECT * FROM LocatedAt">LocatedAt</button></li>
+    <li><button type= submit name="query" value="SELECT * FROM BeingRepaired">BeingRepaired</button></li>
+    <li><button type= submit name="query" value="SELECT * FROM Review;">Review</button></li>
+  </form>
   </ol>
 
   <p align = center><b>Queries:</b></p>
