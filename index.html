@@ -100,17 +100,19 @@
   presented query output, <big><b>must be</b></big> the original SQL for your query.</i><p>
   -->
   <ol>
-  <li><a href="http://www.cs.csustan.edu/">Query1</a>:
+  <form METHOD=POST ACTION="library.php">
+  <li><button type= submit name="query" value="SELECT AVG(Balance) FROM LibraryUsers WHERE Blocked = 1;">Query1</button>:
   Among library goers that are blocked, what is the average amount of money that they owe to the library?</li>
-  <li><a href="http://www.cs.csustan.edu/">Query2</a>:
+  <li><button type=submit name="query" value="SELECT S.Genre, S.BranchID FROM Shelf AS B, LocatedAt AS LA WHERE B.ISBN=2591400744985 AND B.wID = LA.wID AND LA.secID = S.secID">Query2</button>:
   What is the genre of the ISBN “2591400744985,” what branches can I find it in and what sections within those branches will I actually be looking for a copy?</li>
-  <li><a href="http://www.cs.csustan.edu/">Query3</a>:
+  <li><button type=submit name="query" value="SELECT Shelf.Genre AS Book Genre,COUNT(Shellf.Genre) AS Quantity FROM Shelf Group BY Shelf.Genre HAVING COUNT(*)>1;">Query3</button>:
   In the entire library, including all branches, what genres have more than one section dedicated to them and how many sections does each have?</li>
-  <li><a href="http://www.cs.csustan.edu/">Query4</a>:
+  <li><button type=submit name="query" value="SELECT DISTINCT LanguageWritten FROM Periodicals;">Query4</button>:
   What languages does the library carry for their periodicals? </li>
-  <li><a href="http://www.cs.csustan.edu/">Query5</a>:
+  <li><button type=submit name="query" value="SELECT DISTINCT COUNT(*) FROM Rent WHERE DATE_ADD(StartDate, INTERVAL Days_Length Day)<'2016-12-25' AND DATE_ADD(StartDate,INTERVAL Days_Length Day)>='2016-12-1'">Query5</button>:
   How many rented books are due back in December of 2016 before Christmas?</li>
   </ol>
+  </form>
 
   </body>
 </html>
