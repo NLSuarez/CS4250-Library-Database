@@ -22,21 +22,14 @@
 
   <p align =center><b>Ad-hoc Query:</b></p>
   <form METHOD=POST ACTION="library.php">
-     <table>
-     <tr>
-          <br>Please enter your query here. Input Example: SELECT * FROM LibraryUsers WHERE Blocked = 1;</br>
-       <td>
-          <input type=text size=117 maxlength=1500 name="query">
-       </td>
-     </tr>
-     <tr>
-       <td>
+    <div class='querybox'>
+          Please enter your query here. Input Example: SELECT * FROM LibraryUsers WHERE Blocked = 1;</br>
+          <input type=text size=117 maxlength=1500 name="query"></br>
+        <div id='submissionField'>
           <input type=reset value="Clear">
           <input type=submit value="Submit">
-       </td>
-
-     </tr>
-   </table>
+        </div>
+    </div>
 </form>
 
   <p align = center>

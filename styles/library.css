@@ -2,30 +2,41 @@ body{
   border-style: solid;
   border-width: 5px;
 }
+
 h2 {
 
   font-family:"Courier New",Courier,Monospace;
   font-size:300%;
 }
+
 b {
   font-family:"Courier New",Courier,Monospace;
   font-size:100%;
 }
+
 p {
   border-style: solid;
   border-width: 5px;
   font-family:"Courier New",Courier,Monospace;
   font-size:100%;
 }
+
 ol {
   font-family:"Courier New",Courier,Monospace;
   font-size:100%;
 }
-td {
+
+br{
+ font-family:"Courier New",Courier,Monospace;
+ font-size:100%;
+}
+.querybox{
+  text-align: center;
+  align-items: center;
   font-family:"Courier New",Courier,Monospace;
   font-size:100%;
 }
-br{
- font-family:"Courier New",Courier,Monospace;
-font-size:100%;
+
+#submissionField{
+  padding: 5px
 }
