@@ -18,18 +18,20 @@
     so <strong>do not change the names of your tables</strong> unless you update all of your
     documentation to match the new names.  (Did you test your ad-hoc query form with a "like" query?) -->
 
-  <p> <h2 align ="center"><img src= https://s5.postimg.org/f7r25ukc7/dblogo.jpg alt="" width="100" height="100">Library Database</h2></p>
+  <p> <h2 align="center"><img src= https://s5.postimg.org/f7r25ukc7/dblogo.jpg alt="" width="100" height="100">Library Database</h2></p>
 
-  <p align =center><b>Ad-hoc Query:</b></p>
-  <form METHOD=POST ACTION="library.php">
-    <div class='querybox'>
+  <p align="center"><b>Ad-hoc Query:</b></p>
+  <form class='querybox'METHOD=POST ACTION="library.php">
+    <div class='inputSep'>
           Please enter your query here. Input Example: SELECT * FROM LibraryUsers WHERE Blocked = 1;</br>
-          <input type=text size=117 maxlength=1500 name="query"></br>
-        <div id='submissionField'>
+    </div>
+        <div class='inputSep'>
+          <input type=text size=117 maxlength=1500 name="query">
+        </div>
+        <div class='inputSep'>
           <input type=reset value="Clear">
           <input type=submit value="Submit">
         </div>
-    </div>
 </form>
 
   <p align = center>

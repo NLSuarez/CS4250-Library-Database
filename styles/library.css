@@ -30,13 +30,25 @@ br{
  font-family:"Courier New",Courier,Monospace;
  font-size:100%;
 }
-.querybox{
-  text-align: center;
-  align-items: center;
+
+form.querybox{
+  margin-left: auto;
+  margin-right: auto;
   font-family:"Courier New",Courier,Monospace;
   font-size:100%;
+  display: table;
+  text-align: center;
 }
 
-#submissionField{
-  padding: 5px
+div.inputSep{
+  display: table-row;
+}
+
+input{
+  margin: 5px;
+  display: table-cell;
+}
+
+li{
+  margin: 5px;
 }

@@ -14,10 +14,16 @@ function invalidRedirect() {
   </script>
   </head>
   <body>
-  <p>
-  This query box is only meant to be used for 'Select' statements.
-  You will be redirected back to the main page in 5 seconds to try again.
-  </p>
+    <div id='warningMessage'>
+      <p>
+        This query box is only meant to be used for 'Select' statements.
+        You will be redirected back to the main page in 5 seconds to try again.
+      </p>
+      <p><strong>If not redirected, use the button below to return to the main page.</strong></p>
+      <form class='returnButton' action='index.html'>
+        <input type='submit' value='Return to Index'/>
+      </form>
+    </div>
   </body>
   </html>";
 }
@@ -108,6 +114,12 @@ function main () {
     if(!$result) {
       //If the query fails for some reason, return an error message.
       printf("Query Error: %s \n", mysqli_error($Library));
+      echo "
+      <form class='returnButton' action='index.html'>
+        <input type='submit' value='Return to Index'/>
+      </form>
+      </body>
+      </html>";
     } else {
       //If it didn't, begin printing the table.
       echo '<p>Your results are:</p>
@@ -125,9 +137,12 @@ function main () {
         }
         echo '</tr>';
       }
-      echo '</table>
+      echo "</table>
+      <form class='returnButton' action='index.html'>
+        <input type='submit' value='Return to Index'/>
+      </form>
       </body>
-      </html>';
+      </html>";
       mysqli_free_result($result);
     }
   } else {
