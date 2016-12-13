@@ -2,9 +2,19 @@
 
 function invalidRedirect() {
   //If the data was valid, the next section will not be reached.
-  echo "This query box is only meant to be used for 'Select' statements. "
-  ."You will be redirected back to the main page in 5 seconds to try again.";
-  //Needs to echo actual html with javascript to redirect.
+  //The field for href will need to be changed to whatever href is hosted.
+  echo "<html>
+  <head>
+  </head>
+  <body onload=\"if (typeof(Redirect)!=undefined)
+setTimeout(function()
+    {window.location.href='./index.html'},5000);\">
+  <p>
+  This query box is only meant to be used for 'Select' statements.
+  You will be redirected back to the main page in 5 seconds to try again.
+  </p>
+  </body>
+  </html>";
 }
 
 //Begin security
@@ -12,10 +22,10 @@ function invalidRedirect() {
 //, "INSERT ", "LOAD ", "CALL ", "DELETE ", "REPLACE ", "UPDATE ", "HANDLER ",
 // "GRANT ", "REVOKE ", "PURGE ", "RESET ", "SET "
 function validateInput($queryInput) {
-    $dataValid = true;
-    $questionableInput = strtoupper($queryInput);
+  $dataValid = true;
+  $questionableInput = strtoupper($queryInput);
 
-    if(strpos($questionableInput, "CREATE ") !== false){
+  if(strpos($questionableInput, "CREATE ") !== false){
     //strpos either returns false if a string is not found within another
     //string. Anything else means that the string exists.
     $dataValid = false;
@@ -61,36 +71,43 @@ function validateInput($queryInput) {
   } else {
     return false;
   }
-//End security
+  //End security
 }
 
 function main () {
-    //Include username and password
-    include 'info.php';
+  //Include username and password
+  include 'info.php';
 
-    // Create connection
-    $Library = new mysqli("localhost", $username, $password, "ssuarez");
-    // Check connection
-    if ($Library->connect_errno) {
-      echo "Failed to connect to MySQL: (" . $Library->connect_errno . ") " . $Library->connect_error;
-      exit();
-      //die("Connection failed: " . $Library->connect_error);
-    }
-    //Make sure the data is secure.
-    $querySafe = validateInput($_POST["query"]);
-    if($querySafe) {
-      //Generate the page with data in a table and repeat the query at the top.
-      echo '<html>
-              <head>
-              </head>
-              <body>'
-              . $_POST["query"] . '</br>
-              <table>
-              <tr>';
-      $result = mysqli_query($Library, $_POST["query"]);
+  // Create connection
+  $Library = new mysqli("localhost", $username, $password, "ssuarez");
+  // Check connection
+  if ($Library->connect_errno) {
+    echo "Failed to connect to MySQL: (" . $Library->connect_errno . ") " . $Library->connect_error;
+    exit();
+  }
+  //Make sure the data is secure.
+  $querySafe = validateInput($_POST["query"]);
+  if($querySafe) {
+    //Generate initial html with a repeat of the query at the top.
+    echo '<html>
+    <head>
+    </head>
+    <body>
+    <p>'
+    . $_POST["query"] . '</p>';
+    //Run the query.
+    $result = mysqli_query($Library, $_POST["query"]);
+    //Check the success of the query.
+    if(!$result) {
+      //If the query fails for some reason, return an error message.
+      printf("Query Error: %s \n", mysqli_error($Library));
+    } else {
+      //If it didn't, begin printing the table.
+      echo '<table>
+      <tr>';
       $fieldinfo = mysqli_fetch_fields($result);
       foreach ($fieldinfo as $val) {
-          echo '<td>' . $val->name . '</td>';
+        echo '<td>' . $val->name . '</td>';
       }
       echo '</tr>';
       while ($row = mysqli_fetch_row($result)) {
@@ -101,12 +118,13 @@ function main () {
         echo '</tr>';
       }
       echo '</table>
-            </body>
-            </html>';
-      mysqli_free_result($result);
-    } else {
-      invalidRedirect();
+      </body>
+      </html>';
     }
+    mysqli_free_result($result);
+  } else {
+    invalidRedirect();
+  }
 }
 
 main();
