@@ -97,9 +97,10 @@ function main () {
     echo '<!DOCTYPE HTML>
     <html>
     <head>
+    <link rel="stylesheet" type="text/css" href="styles/selectResultsTable.css">
     </head>
     <body>
-    <p>'
+    <p> You entered: '
     . $_POST["query"] . '</p>';
     //Run the query.
     $result = mysqli_query($Library, $_POST["query"]);
@@ -109,11 +110,12 @@ function main () {
       printf("Query Error: %s \n", mysqli_error($Library));
     } else {
       //If it didn't, begin printing the table.
-      echo '<table>
+      echo '<p>Your results are:</p>
+      <table>
       <tr>';
       $fieldinfo = mysqli_fetch_fields($result);
       foreach ($fieldinfo as $val) {
-        echo '<td>' . $val->name . '</td>';
+        echo '<th>' . $val->name . '</th>';
       }
       echo '</tr>';
       while ($row = mysqli_fetch_row($result)) {
