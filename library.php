@@ -3,10 +3,17 @@
 function invalidRedirect() {
   //If the data was valid, the next section will not be reached.
   //The field for href will need to be changed to whatever href is hosted.
-  echo "<html>
+  echo "<!DOCTYPE HTML>
+  <html>
   <head>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+  <script>
+    $(document).ready(function(){
+      window.setTimeout(\"window.location.href='./index.html';\", 5000)
+    });
+  </script>
   </head>
-  <body onload=\"setTimeout(window.location.href='./index.html' ,5000)\">
+  <body>
   <p>
   This query box is only meant to be used for 'Select' statements.
   You will be redirected back to the main page in 5 seconds to try again.
@@ -87,7 +94,8 @@ function main () {
   $querySafe = validateInput($_POST["query"]);
   if($querySafe) {
     //Generate initial html with a repeat of the query at the top.
-    echo '<html>
+    echo '<!DOCTYPE HTML>
+    <html>
     <head>
     </head>
     <body>
@@ -118,8 +126,8 @@ function main () {
       echo '</table>
       </body>
       </html>';
+      mysqli_free_result($result);
     }
-    mysqli_free_result($result);
   } else {
     invalidRedirect();
   }
