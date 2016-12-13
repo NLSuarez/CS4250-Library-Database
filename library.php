@@ -6,9 +6,7 @@ function invalidRedirect() {
   echo "<html>
   <head>
   </head>
-  <body onload=\"if (typeof(Redirect)!=undefined)
-setTimeout(function()
-    {window.location.href='./index.html'},5000);\">
+  <body onload=\"setTimeout(window.location.href='./index.html' ,5000)\">
   <p>
   This query box is only meant to be used for 'Select' statements.
   You will be redirected back to the main page in 5 seconds to try again.
